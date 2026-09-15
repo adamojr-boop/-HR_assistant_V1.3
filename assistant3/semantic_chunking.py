@@ -1,6 +1,6 @@
 from langchain_experimental.text_splitter import SemanticChunker
 from langchain_openai import OpenAIEmbeddings
-from hr_assistant.config import OPENAI_API_KEY
+from assistant3.config import OPENAI_API_KEY
 
 class SemanticChunkerProcessor:
     @staticmethod

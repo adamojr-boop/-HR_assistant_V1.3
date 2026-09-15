@@ -1,9 +1,9 @@
 import os
 import hashlib
 from pathlib import Path
-from hr_assistant.config import RESUMES_DIR
-from hr_assistant.database import Database
-from hr_assistant.semantic_chunking import SemanticChunkerProcessor
+from assistant3.config import RESUMES_DIR
+from assistant3.database import Database
+from assistant3.semantic_chunking import SemanticChunkerProcessor
 
 def calculate_file_hash(file_path: Path) -> str:
     """Calcola l'hash SHA-256 del contenuto del file per tracciarne le modifiche."""
