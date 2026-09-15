@@ -1,26 +1,20 @@
-from langchain_openai import OpenAIEmbeddings
-from langchain_chroma import Chroma
-from assistant3.config import CHROMA_DIR, OPENAI_API_KEY
+import chromadb
+from pathlib import Path
 
 class Database:
-    def __init__(self):
-        """Inizializza gli embedding di OpenAI e il vector store ChromaDB."""
-        self.embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
-        self.vectorstore = Chroma(
-            persist_directory=str(CHROMA_DIR),
-            embedding_function=self.embeddings
-        )
+    def __init__(self, collection_name="hr_resumes", persist_directory: str = "./chroma_db"):
+        """Inizializza un database ChromaDB persistente su disco per il vero recupero semantico."""
+        self.persist_path = Path(persist_directory)
+        self.persist_path.mkdir(parents=True, exist_ok=True)
+        
+        self.client = chromadb.PersistentClient(path=str(self.persist_path))
+        
+        self._collection = self.client.get_or_create_collection(name=collection_name)
+
+    def get_or_create_collection(self, name=None):
+        if name and name != self._collection.name:
+            return self.client.get_or_create_collection(name=name)
+        return self._collection
 
     def get_collection(self):
-        """Restituisce la collezione sottostante di ChromaDB (utile per conteggi e statistiche)."""
-        try:
-            return self.vectorstore._collection
-        except Exception:
-            return None
-
-    def delete_collection(self):
-        """Elimina interamente la collezione dal database."""
-        try:
-            self.vectorstore.delete_collection()
-        except Exception:
-            pass
+        return self._collection
