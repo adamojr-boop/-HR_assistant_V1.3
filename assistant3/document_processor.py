@@ -1,6 +1,7 @@
 import os
 import hashlib
 from pathlib import Path
+from langchain_community.document_loaders import UnstructuredFileLoader
 from assistant3.config import RESUMES_DIR
 from assistant3.database import Database
 from assistant3.semantic_chunking import SemanticChunkerProcessor
@@ -12,6 +13,16 @@ def calculate_file_hash(file_path: Path) -> str:
         for byte_block in iter(lambda: f.read(4096), b""):
             sha256_hash.update(byte_block)
     return sha256_hash.hexdigest()
+
+def extract_text_from_file(file_path: Path) -> str:
+    """Estrae il testo da qualsiasi formato supportato da Unstructured (PDF, DOCX, TXT, ecc.)."""
+    try:
+        loader = UnstructuredFileLoader(str(file_path))
+        docs = loader.load()
+        return "\n".join([doc.page_content for doc in docs])
+    except Exception as e:
+        print(f"[ERROR] Impossibile estrarre il testo dal file {file_path.name}: {e}")
+        return ""
 
 class DocumentProcessor:
     def __init__(self, db: Database):
@@ -26,7 +37,7 @@ class DocumentProcessor:
         }
 
     def sync_documents(self):
-        """Sincronizza la cartella resumes/ con ChromaDB (Added, Updated, Removed)."""
+        """Sincronizza la cartella resumes/ con ChromaDB supportando formati multipli."""
         print(f"\n[DEBUG] Controllo cartella resumes in corso...")
         print(f"[DEBUG] Percorso assoluto cercato: {RESUMES_DIR.resolve()}")
         
@@ -36,8 +47,13 @@ class DocumentProcessor:
             print(f"[DEBUG] Cartella creata, ma è vuota.")
             return
         
-        local_files = {f.name: f for f in RESUMES_DIR.iterdir() if f.is_file() and f.suffix.lower() == ".txt"}
-        print(f"[DEBUG] File .txt trovati nella cartella: {list(local_files.keys())}")
+        # Estensioni supportate in modo esteso
+        supported_extensions = {".txt", ".pdf", ".docx", ".doc", ".pptx", ".xlsx", ".csv", ".md"}
+        local_files = {
+            f.name: f for f in RESUMES_DIR.iterdir() 
+            if f.is_file() and f.suffix.lower() in supported_extensions
+        }
+        print(f"[DEBUG] File compatibili trovati nella cartella: {list(local_files.keys())}")
         
         local_file_names = set(local_files.keys())
 
@@ -56,11 +72,9 @@ class DocumentProcessor:
                 file_to_chunk_ids.setdefault(source, []).append(chunk_id)
 
         db_file_names = set(db_files_info.keys())
-        print(f"[DEBUG] File già presenti nel database: {list(db_file_names)}")
 
         added_files = local_file_names - db_file_names
         removed_files = db_file_names - local_file_names
-        print(f"[DEBUG] File nuovi da aggiungere: {list(added_files)}")
         
         common_files = local_file_names.intersection(db_file_names)
         updated_files = set()
@@ -81,27 +95,29 @@ class DocumentProcessor:
             file_path = local_files[filename]
             current_hash = calculate_file_hash(file_path)
             
-            with open(file_path, "r", encoding="utf-8") as f:
-                content = f.read()
+            content = extract_text_from_file(file_path)
+            if not content.strip():
+                print(f"[WARNING] Il file '{filename}' è vuoto o non leggibile.")
+                continue
 
             chunks = SemanticChunkerProcessor.chunk_it(content)
             print(f"[DEBUG] File '{filename}' suddiviso in {len(chunks)} chunk semantici.")
 
             documents = []
             ids = []
-            metadatas = []
+            metadata_list = []
 
             for idx, chunk in enumerate(chunks):
                 if chunk and not chunk.isspace():
                     chunk_id = f"{filename}_chunk_{idx}"
                     documents.append(chunk)
                     ids.append(chunk_id)
-                    metadatas.append(self.get_document_metadata(str(file_path), current_hash))
+                    metadata_list.append(self.get_document_metadata(str(file_path), current_hash))
 
             if documents:
                 self.collection.add(
                     documents=documents,
                     ids=ids,
-                    metadatas=metadatas
+                    metadatas=metadata_list
                 )
                 print(f"[DEBUG] Salvati con successo {len(documents)} chunk per il file '{filename}'.\n")

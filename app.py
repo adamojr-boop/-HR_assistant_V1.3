@@ -57,3 +57,5 @@ async def main(message: cl.Message):
     """Gestisce i messaggi di chat dell'utente (query RAG)."""
     
     await cl.Message(content=f"Hai scritto: {message.content}. (La logica di risposta RAG verrà collegata qui)").send()
+    
+#poetry run chainlit run app.py -w ---> Avvia L'app in Chainlit con interfaccia web
