@@ -112,3 +112,5 @@ Domanda: {user_query}
 
     msg.content = answer
     await msg.update()
+    
+#poetry run chainlit run app.py -w ---> Avvia L'app in Chainlit con interfaccia web
