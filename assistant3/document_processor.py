@@ -1,7 +1,7 @@
 import os
 import hashlib
 from pathlib import Path
-from markitdown import MarkItDown  # <-- Importi MarkItDown
+from markitdown import MarkItDown
 from assistant3.config import RESUMES_DIR
 from assistant3.database import Database
 from assistant3.semantic_chunking import SemanticChunkerProcessor
