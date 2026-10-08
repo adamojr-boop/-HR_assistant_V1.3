@@ -5,7 +5,7 @@ from zipfile import ZipFile
 from typing import List, Tuple, Dict, Any
 from markitdown import MarkItDown
 from langchain_core.documents import Document
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from hr_assistant.semantic_chunking import SemanticChunkerProcessor
 
 class DocumentProcessor:
     SUPPORTED_EXTENSIONS = {
@@ -64,7 +64,7 @@ class DocumentProcessor:
             return ""
 
     def process_single_document(self, file_path: str) -> Tuple[List[str], List[Dict], List[str]]:
-        """Processa un singolo documento (o archivio ZIP) in chunk pronti per il vector DB."""
+        """Processa un singolo documento (o archivio ZIP) in chunk semantici pronti per il vector DB."""
         documents = []
         metadatas = []
         ids = []
@@ -87,8 +87,8 @@ class DocumentProcessor:
         if not content:
             return [], [], []
 
-        text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-        chunks = text_splitter.split_text(content)
+        # Applicazione del Semantic Chunking basato sul modulo del professore
+        chunks = SemanticChunkerProcessor.chunk_it(content)
 
         base_filename = os.path.basename(file_path)
         for i, chunk in enumerate(chunks):
@@ -141,8 +141,13 @@ class DocumentProcessor:
                     self.db.remove_document_by_source(filename)
 
                 docs, metas, ids = self.process_single_document(file_path)
-                if docs and hasattr(self.db, "add_chunks_with_ids"):
-                    self.db.add_chunks_with_ids(docs, metas, ids)
-                elif docs:
-
-                    self.db.add_documents([Document(page_content=d, metadata=m) for d, m in zip(docs, metas)])
+                if docs:
+                    # Inserimento sicuro e compatibile con qualsiasi interfaccia del Database custom
+                    if hasattr(self.db, "add_chunks_with_ids"):
+                        self.db.add_chunks_with_ids(docs, metas, ids)
+                    elif hasattr(self.db, "add_documents"):
+                        self.db.add_documents([Document(page_content=d, metadata=m) for d, m in zip(docs, metas)])
+                    else:
+                        for d, m, i in zip(docs, metas, ids):
+                            if hasattr(self.db, "add_chunk"):
+                                self.db.add_chunk(d, m, i)
