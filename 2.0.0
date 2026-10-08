@@ -1,0 +1,191 @@
+Collecting numpy
+  Using cached numpy-2.5.3-cp313-cp313-win_amd64.whl.metadata (6.6 kB)
+Requirement already satisfied: chainlit in .\.venv\Lib\site-packages (2.6.3)
+Collecting chainlit
+  Using cached chainlit-2.12.0-py3-none-any.whl.metadata (8.0 kB)
+Requirement already satisfied: aiofiles>=23.1.0 in .\.venv\Lib\site-packages (from chainlit) (23.2.1)
+Requirement already satisfied: asyncer<0.1.0,>=0.0.8 in .\.venv\Lib\site-packages (from chainlit) (0.0.8)
+Requirement already satisfied: click<9.0.0,>=8.1.3 in .\.venv\Lib\site-packages (from chainlit) (8.5.0)
+Requirement already satisfied: dataclasses-json<0.7.0,>=0.6.7 in .\.venv\Lib\site-packages (from chainlit) (0.6.7)
+Collecting fastapi>=0.116.1 (from chainlit)
+  Using cached fastapi-0.141.1-py3-none-any.whl.metadata (27 kB)
+Requirement already satisfied: filetype<2.0.0,>=1.2.0 in .\.venv\Lib\site-packages (from chainlit) (1.2.0)
+Requirement already satisfied: httpx>=0.23.0 in .\.venv\Lib\site-packages (from chainlit) (0.28.1)
+Requirement already satisfied: lazify<0.5.0,>=0.4.0 in .\.venv\Lib\site-packages (from chainlit) (0.4.0)
+Requirement already satisfied: literalai==0.1.201 in .\.venv\Lib\site-packages (from chainlit) (0.1.201)
+Collecting mcp<2.0.0,>=1.28.1 (from chainlit)
+  Using cached mcp-1.30.0-py3-none-any.whl.metadata (9.3 kB)
+Requirement already satisfied: nest-asyncio<2.0.0,>=1.6.0 in .\.venv\Lib\site-packages (from chainlit) (1.6.0)
+Requirement already satisfied: packaging>=23.1 in .\.venv\Lib\site-packages (from chainlit) (23.2)
+Requirement already satisfied: pydantic-settings>=2.14.2 in .\.venv\Lib\site-packages (from chainlit) (2.15.0)
+Collecting pydantic<3,>=2.11.0 (from chainlit)
+  Using cached pydantic-2.13.5-py3-none-any.whl.metadata (110 kB)
+Requirement already satisfied: pyjwt<3.0.0,>=2.13.0 in .\.venv\Lib\site-packages (from chainlit) (2.14.0)
+Requirement already satisfied: python-dotenv<2.0.0,>=1.0.0 in .\.venv\Lib\site-packages (from chainlit) (1.2.3)
+Collecting python-multipart<1.0.0,>=0.0.30 (from chainlit)
+  Using cached python_multipart-0.0.32-py3-none-any.whl.metadata (2.1 kB)
+Requirement already satisfied: python-socketio<6.0.0,>=5.11.0 in .\.venv\Lib\site-packages (from chainlit) (5.16.4)
+Collecting starlette>=0.47.2 (from chainlit)
+  Using cached starlette-1.6.0-py3-none-any.whl.metadata (6.4 kB)
+Requirement already satisfied: syncer<3.0.0,>=2.0.3 in .\.venv\Lib\site-packages (from chainlit) (2.0.3)
+Requirement already satisfied: tomli<3.0.0,>=2.0.1 in .\.venv\Lib\site-packages (from chainlit) (2.4.1)
+Collecting uvicorn>=0.35.0 (from chainlit)
+  Using cached uvicorn-0.53.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting watchfiles<2.0.0,>=1.1.1 (from chainlit)
+  Using cached watchfiles-1.2.0-cp313-cp313-win_amd64.whl.metadata (5.0 kB)
+Requirement already satisfied: chevron>=0.14.0 in .\.venv\Lib\site-packages (from literalai==0.1.201->chainlit) (0.14.0)
+Requirement already satisfied: traceloop-sdk>=0.33.12 in .\.venv\Lib\site-packages (from literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: anyio<5.0,>=3.4.0 in .\.venv\Lib\site-packages (from asyncer<0.1.0,>=0.0.8->chainlit) (4.15.1)
+Requirement already satisfied: idna>=2.8 in .\.venv\Lib\site-packages (from anyio<5.0,>=3.4.0->asyncer<0.1.0,>=0.0.8->chainlit) (3.19)
+Requirement already satisfied: typing_extensions>=4.16.0 in .\.venv\Lib\site-packages (from anyio<5.0,>=3.4.0->asyncer<0.1.0,>=0.0.8->chainlit) (4.16.0)
+Requirement already satisfied: marshmallow<4.0.0,>=3.18.0 in .\.venv\Lib\site-packages (from dataclasses-json<0.7.0,>=0.6.7->chainlit) (3.26.2)
+Requirement already satisfied: typing-inspect<1,>=0.4.0 in .\.venv\Lib\site-packages (from dataclasses-json<0.7.0,>=0.6.7->chainlit) (0.9.0)
+Requirement already satisfied: httpx-sse>=0.4 in .\.venv\Lib\site-packages (from mcp<2.0.0,>=1.28.1->chainlit) (0.4.3)
+Requirement already satisfied: jsonschema>=4.20.0 in .\.venv\Lib\site-packages (from mcp<2.0.0,>=1.28.1->chainlit) (4.26.0)
+Requirement already satisfied: pywin32>=310 in .\.venv\Lib\site-packages (from mcp<2.0.0,>=1.28.1->chainlit) (312)
+Requirement already satisfied: sse-starlette>=1.6.1 in .\.venv\Lib\site-packages (from mcp<2.0.0,>=1.28.1->chainlit) (3.0.3)
+Requirement already satisfied: typing-inspection>=0.4.1 in .\.venv\Lib\site-packages (from mcp<2.0.0,>=1.28.1->chainlit) (0.4.4)
+Requirement already satisfied: certifi in .\.venv\Lib\site-packages (from httpx>=0.23.0->chainlit) (2026.7.22)
+Requirement already satisfied: httpcore==1.* in .\.venv\Lib\site-packages (from httpx>=0.23.0->chainlit) (1.0.9)
+Requirement already satisfied: h11>=0.16 in .\.venv\Lib\site-packages (from httpcore==1.*->httpx>=0.23.0->chainlit) (0.16.0)
+Requirement already satisfied: annotated-types>=0.6.0 in .\.venv\Lib\site-packages (from pydantic<3,>=2.11.0->chainlit) (0.8.0)
+Collecting pydantic-core==2.46.5 (from pydantic<3,>=2.11.0->chainlit)
+  Using cached pydantic_core-2.46.5-cp313-cp313-win_amd64.whl.metadata (6.7 kB)
+Requirement already satisfied: bidict>=0.21.0 in .\.venv\Lib\site-packages (from python-socketio<6.0.0,>=5.11.0->chainlit) (0.24.1)
+Requirement already satisfied: python-engineio>=4.13.2 in .\.venv\Lib\site-packages (from python-socketio<6.0.0,>=5.11.0->chainlit) (4.14.0)
+Requirement already satisfied: mypy-extensions>=0.3.0 in .\.venv\Lib\site-packages (from typing-inspect<1,>=0.4.0->dataclasses-json<0.7.0,>=0.6.7->chainlit) (1.1.0)
+Requirement already satisfied: annotated-doc>=0.0.2 in .\.venv\Lib\site-packages (from fastapi>=0.116.1->chainlit) (0.0.5)
+Requirement already satisfied: attrs>=22.2.0 in .\.venv\Lib\site-packages (from jsonschema>=4.20.0->mcp<2.0.0,>=1.28.1->chainlit) (26.1.0)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in .\.venv\Lib\site-packages (from jsonschema>=4.20.0->mcp<2.0.0,>=1.28.1->chainlit) (2025.9.1)
+Requirement already satisfied: referencing>=0.28.4 in .\.venv\Lib\site-packages (from jsonschema>=4.20.0->mcp<2.0.0,>=1.28.1->chainlit) (0.37.0)
+Requirement already satisfied: rpds-py>=0.25.0 in .\.venv\Lib\site-packages (from jsonschema>=4.20.0->mcp<2.0.0,>=1.28.1->chainlit) (2026.6.3)
+Collecting cryptography>=3.4.0 (from pyjwt[crypto]>=2.10.1->mcp<2.0.0,>=1.28.1->chainlit)
+  Using cached cryptography-50.0.1-cp311-abi3-win_amd64.whl.metadata (4.3 kB)
+Collecting cffi>=2.0.0 (from cryptography>=3.4.0->pyjwt[crypto]>=2.10.1->mcp<2.0.0,>=1.28.1->chainlit)
+  Using cached cffi-2.1.1-cp313-cp313-win_amd64.whl.metadata (2.6 kB)
+Collecting pycparser (from cffi>=2.0.0->cryptography>=3.4.0->pyjwt[crypto]>=2.10.1->mcp<2.0.0,>=1.28.1->chainlit)
+  Using cached pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+Requirement already satisfied: simple-websocket>=0.10.0 in .\.venv\Lib\site-packages (from python-engineio>=4.13.2->python-socketio<6.0.0,>=5.11.0->chainlit) (1.1.0)
+Requirement already satisfied: wsproto in .\.venv\Lib\site-packages (from simple-websocket>=0.10.0->python-engineio>=4.13.2->python-socketio<6.0.0,>=5.11.0->chainlit) (1.3.2)
+Requirement already satisfied: aiohttp<4,>=3.11.11 in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (3.14.3)
+Requirement already satisfied: colorama<0.5.0,>=0.4.6 in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.4.6)
+Requirement already satisfied: cuid<0.5,>=0.4 in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.4)
+Requirement already satisfied: deprecated<2,>=1.2.14 in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (1.3.1)
+Requirement already satisfied: jinja2<4,>=3.1.5 in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (3.1.6)
+Requirement already satisfied: opentelemetry-api<2,>=1.38.0 in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (1.41.1)
+Requirement already satisfied: opentelemetry-exporter-otlp-proto-grpc<2,>=1.38.0 in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (1.41.1)
+Requirement already satisfied: opentelemetry-exporter-otlp-proto-http<2,>=1.38.0 in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (1.41.1)
+Requirement already satisfied: opentelemetry-instrumentation-agno in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-alephalpha in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-anthropic in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-bedrock in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-chromadb in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-cohere in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-crewai in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-google-generativeai in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-groq in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-haystack in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-lancedb in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-langchain in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-llamaindex in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-logging>=0.59b0 in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.62b1)
+Requirement already satisfied: opentelemetry-instrumentation-marqo in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-mcp in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-milvus in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.60.0)
+Requirement already satisfied: opentelemetry-instrumentation-mistralai in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-ollama in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-openai in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-openai-agents in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-pinecone in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.60.0)
+Requirement already satisfied: opentelemetry-instrumentation-qdrant in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-redis>=0.59b0 in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.62b1)
+Requirement already satisfied: opentelemetry-instrumentation-replicate in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-requests>=0.59b0 in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.62b1)
+Requirement already satisfied: opentelemetry-instrumentation-sagemaker in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-sqlalchemy>=0.59b0 in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.62b1)
+Requirement already satisfied: opentelemetry-instrumentation-threading>=0.59b0 in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.62b1)
+Requirement already satisfied: opentelemetry-instrumentation-together in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-transformers in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-urllib3>=0.59b0 in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.62b1)
+Requirement already satisfied: opentelemetry-instrumentation-vertexai in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-voyageai in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-watsonx in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-weaviate in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-instrumentation-writer in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.61.0)
+Requirement already satisfied: opentelemetry-sdk<2,>=1.38.0 in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (1.41.1)
+Requirement already satisfied: opentelemetry-semantic-conventions-ai<0.6.0,>=0.5.1 in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.5.1)
+Requirement already satisfied: tenacity<10.0,>=8.2.3 in .\.venv\Lib\site-packages (from traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (8.5.0)
+Requirement already satisfied: aiohappyeyeballs>=2.5.0 in .\.venv\Lib\site-packages (from aiohttp<4,>=3.11.11->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (2.7.1)
+Requirement already satisfied: aiosignal>=1.4.0 in .\.venv\Lib\site-packages (from aiohttp<4,>=3.11.11->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (1.4.0)
+Requirement already satisfied: frozenlist>=1.1.1 in .\.venv\Lib\site-packages (from aiohttp<4,>=3.11.11->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (1.8.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in .\.venv\Lib\site-packages (from aiohttp<4,>=3.11.11->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (6.8.0)
+Requirement already satisfied: propcache>=0.2.0 in .\.venv\Lib\site-packages (from aiohttp<4,>=3.11.11->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.5.2)
+Requirement already satisfied: yarl<2.0,>=1.17.0 in .\.venv\Lib\site-packages (from aiohttp<4,>=3.11.11->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (1.24.5)
+Requirement already satisfied: wrapt<3,>=1.10 in .\.venv\Lib\site-packages (from deprecated<2,>=1.2.14->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (2.4.1)
+Requirement already satisfied: MarkupSafe>=2.0 in .\.venv\Lib\site-packages (from jinja2<4,>=3.1.5->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (3.0.3)
+Requirement already satisfied: importlib-metadata<8.8.0,>=6.0 in .\.venv\Lib\site-packages (from opentelemetry-api<2,>=1.38.0->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (8.7.1)
+Requirement already satisfied: zipp>=3.20 in .\.venv\Lib\site-packages (from importlib-metadata<8.8.0,>=6.0->opentelemetry-api<2,>=1.38.0->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (4.1.0)
+Requirement already satisfied: googleapis-common-protos~=1.57 in .\.venv\Lib\site-packages (from opentelemetry-exporter-otlp-proto-grpc<2,>=1.38.0->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (1.75.3)
+Requirement already satisfied: grpcio<2.0.0,>=1.66.2 in .\.venv\Lib\site-packages (from opentelemetry-exporter-otlp-proto-grpc<2,>=1.38.0->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (1.84.0)
+Requirement already satisfied: opentelemetry-exporter-otlp-proto-common==1.41.1 in .\.venv\Lib\site-packages (from opentelemetry-exporter-otlp-proto-grpc<2,>=1.38.0->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (1.41.1)
+Requirement already satisfied: opentelemetry-proto==1.41.1 in .\.venv\Lib\site-packages (from opentelemetry-exporter-otlp-proto-grpc<2,>=1.38.0->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (1.41.1)
+Requirement already satisfied: protobuf<7.0,>=5.0 in .\.venv\Lib\site-packages (from opentelemetry-proto==1.41.1->opentelemetry-exporter-otlp-proto-grpc<2,>=1.38.0->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (6.33.6)
+Requirement already satisfied: requests~=2.7 in .\.venv\Lib\site-packages (from opentelemetry-exporter-otlp-proto-http<2,>=1.38.0->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (2.34.2)
+Requirement already satisfied: opentelemetry-semantic-conventions==0.62b1 in .\.venv\Lib\site-packages (from opentelemetry-sdk<2,>=1.38.0->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.62b1)
+Requirement already satisfied: charset_normalizer<4,>=2 in .\.venv\Lib\site-packages (from requests~=2.7->opentelemetry-exporter-otlp-proto-http<2,>=1.38.0->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (3.5.1)
+Requirement already satisfied: urllib3<3,>=1.26 in .\.venv\Lib\site-packages (from requests~=2.7->opentelemetry-exporter-otlp-proto-http<2,>=1.38.0->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (2.7.0)
+Requirement already satisfied: opentelemetry-instrumentation==0.62b1 in .\.venv\Lib\site-packages (from opentelemetry-instrumentation-logging>=0.59b0->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.62b1)
+Requirement already satisfied: opentelemetry-util-http==0.62b1 in .\.venv\Lib\site-packages (from opentelemetry-instrumentation-requests>=0.59b0->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.62b1)
+Requirement already satisfied: inflection<0.6.0,>=0.5.1 in .\.venv\Lib\site-packages (from opentelemetry-instrumentation-llamaindex->traceloop-sdk>=0.33.12->literalai==0.1.201->chainlit) (0.5.1)
+Using cached numpy-2.5.3-cp313-cp313-win_amd64.whl (12.6 MB)
+Using cached chainlit-2.12.0-py3-none-any.whl (11.4 MB)
+Using cached mcp-1.30.0-py3-none-any.whl (234 kB)
+Using cached pydantic-2.13.5-py3-none-any.whl (472 kB)
+Using cached pydantic_core-2.46.5-cp313-cp313-win_amd64.whl (2.0 MB)
+Using cached python_multipart-0.0.32-py3-none-any.whl (30 kB)
+Using cached watchfiles-1.2.0-cp313-cp313-win_amd64.whl (288 kB)
+Using cached fastapi-0.141.1-py3-none-any.whl (131 kB)
+Using cached cryptography-50.0.1-cp311-abi3-win_amd64.whl (3.8 MB)
+Using cached cffi-2.1.1-cp313-cp313-win_amd64.whl (185 kB)
+Using cached starlette-1.6.0-py3-none-any.whl (75 kB)
+Using cached uvicorn-0.53.0-py3-none-any.whl (87 kB)
+Using cached pycparser-3.0-py3-none-any.whl (48 kB)
+Installing collected packages: uvicorn, python-multipart, pydantic-core, pycparser, numpy, watchfiles, starlette, pydantic, cffi, fastapi, cryptography, mcp, chainlit
+  Attempting uninstall: uvicorn
+    Found existing installation: uvicorn 0.25.0
+    Uninstalling uvicorn-0.25.0:
+      Successfully uninstalled uvicorn-0.25.0
+  Attempting uninstall: python-multipart
+    Found existing installation: python-multipart 0.0.18
+    Uninstalling python-multipart-0.0.18:
+      Successfully uninstalled python-multipart-0.0.18
+  Attempting uninstall: pydantic-core
+    Found existing installation: pydantic_core 2.23.4
+    Uninstalling pydantic_core-2.23.4:
+      Successfully uninstalled pydantic_core-2.23.4
+  Attempting uninstall: watchfiles
+    Found existing installation: watchfiles 0.20.0
+    Uninstalling watchfiles-0.20.0:
+      Successfully uninstalled watchfiles-0.20.0
+  Attempting uninstall: starlette
+    Found existing installation: starlette 0.41.3
+    Uninstalling starlette-0.41.3:
+      Successfully uninstalled starlette-0.41.3
+  Attempting uninstall: pydantic
+    Found existing installation: pydantic 2.9.2
+    Uninstalling pydantic-2.9.2:
+      Successfully uninstalled pydantic-2.9.2
+  Attempting uninstall: fastapi
+    Found existing installation: fastapi 0.115.14
+    Uninstalling fastapi-0.115.14:
+      Successfully uninstalled fastapi-0.115.14
+  Attempting uninstall: mcp
+    Found existing installation: mcp 1.12.4
+    Uninstalling mcp-1.12.4:
+      Successfully uninstalled mcp-1.12.4
+  Attempting uninstall: chainlit
+    Found existing installation: chainlit 2.6.3
+    Uninstalling chainlit-2.6.3:
+      Successfully uninstalled chainlit-2.6.3
+
+Successfully installed cffi-2.1.1 chainlit-2.12.0 cryptography-50.0.1 fastapi-0.141.1 mcp-1.30.0 numpy-2.5.3 pycparser-3.0 pydantic-2.13.5 pydantic-core-2.46.5 python-multipart-0.0.32 starlette-1.6.0 uvicorn-0.53.0 watchfiles-1.2.0
