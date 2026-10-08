@@ -3,10 +3,9 @@ from .document_processor import DocumentProcessor
 from .config import OPENAI_API_KEY
 from langchain_openai import ChatOpenAI
 
-# Inizializzazione dei componenti principali
+# Inizializzazione dei componenti principali (senza bloccare l'import)
 db = Database()
 processor = DocumentProcessor(db)
-processor.sync_documents()
 collection = db.get_collection()
 
 # Configurazione del modello LLM

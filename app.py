@@ -16,16 +16,15 @@ async def start():
 @cl.action_callback("db_stats")
 async def on_db_stats(action: cl.Action):
     count = get_database_stats()
-    await cl.Message(content=f"📊 **Statistiche Database:**\n- Chunk totali: `{count}`").send()
+    await cl.Message(content=f"📊 **Statistiche Database:**\nChunk totali: `{count}`").send()
 
 @cl.action_callback("db_reindex")
 async def on_db_reindex(action: cl.Action):
     count = reindex_database()
-    await cl.Message(content=f"🔄 **Database Reindicizzato!**\n- Chunk totali attuali: `{count}`").send()
+    await cl.Message(content=f"🔄 **Database Reindicizzato!**\nChunk totali attuali: `{count}`").send()
 
 @cl.on_message
 async def main(message: cl.Message):
-    
     msg = cl.Message(content="")
     await msg.send()
     stream = ask_hr_assistant_stream(message.content)
