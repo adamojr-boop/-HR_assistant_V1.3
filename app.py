@@ -74,4 +74,4 @@ async def main(message: cl.Message):
     # Finalizza il messaggio
     await msg.update()
 
-    #Start Assistant ---> chainlit run app.py -w
+    #Start Assistant ---> poetry run chainlit run app.py -w
