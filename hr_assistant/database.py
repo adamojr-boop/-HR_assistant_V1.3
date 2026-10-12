@@ -18,3 +18,24 @@ class Database:
 
     def get_collection(self):
         return self._collection
+
+    def add_chunks_with_ids(self, documents, metadatas, ids):
+        self._collection.upsert(
+            documents=documents,
+            metadatas=metadatas,
+            ids=ids,
+        )
+
+    def remove_document_by_source(self, source: str):
+        self._collection.delete(where={"source": source})
+
+    def get_tracked_files(self):
+        result = self._collection.get(include=["metadatas"])
+        tracked_files = {}
+
+        for metadata in result["metadatas"] or []:
+            source = metadata.get("source")
+            if source:
+                tracked_files[source] = {"hash": metadata.get("hash")}
+
+        return tracked_files

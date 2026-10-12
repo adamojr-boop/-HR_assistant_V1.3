@@ -1,11 +1,10 @@
 from .database import Database
 from .document_processor import DocumentProcessor
-from .config import OPENAI_API_KEY
+from .config import CHROMA_DIR, OPENAI_API_KEY, RESUMES_DIR
 from langchain_openai import ChatOpenAI
 
-# Inizializzazione dei componenti principali (senza bloccare l'import)
-db = Database()
-processor = DocumentProcessor(db)
+db = Database(persist_directory=str(CHROMA_DIR))
+processor = DocumentProcessor(db, docs_dir=RESUMES_DIR)
 collection = db.get_collection()
 
 # Configurazione del modello LLM

@@ -1,6 +1,9 @@
 import os
+import shutil
 import tempfile
 import hashlib
+from pathlib import Path
+from uuid import uuid4
 from zipfile import ZipFile
 from typing import List, Tuple, Dict, Any
 from markitdown import MarkItDown
@@ -19,8 +22,26 @@ class DocumentProcessor:
 
     def __init__(self, db, docs_dir="resumes"):
         self.db = db
-        self.docs_dir = docs_dir
+        self.docs_dir = Path(docs_dir)
         self.md_converter = MarkItDown()
+
+    def save_uploaded_file(self, source_path: str, filename: str) -> Path:
+        """Salva un upload nella cartella dei documenti, senza sovrascrivere file."""
+        safe_filename = os.path.basename(filename)
+        extension = os.path.splitext(safe_filename)[1].lower()
+        if extension not in self.SUPPORTED_EXTENSIONS:
+            supported = ", ".join(sorted(self.SUPPORTED_EXTENSIONS))
+            raise ValueError(f"formato non supportato (ammessi: {supported})")
+
+        self.docs_dir.mkdir(parents=True, exist_ok=True)
+        destination = self.docs_dir / safe_filename
+        if destination.exists():
+            stem = destination.stem
+            suffix = destination.suffix
+            destination = self.docs_dir / f"{stem}_{uuid4().hex[:8]}{suffix}"
+
+        shutil.copy2(source_path, destination)
+        return destination
 
     def get_document_metadata(self, file_path: str) -> Dict[str, Any]:
         """Estrae i metadati di base e calcola l'hash del file per il tracciamento."""
@@ -91,9 +112,15 @@ class DocumentProcessor:
         chunks = SemanticChunkerProcessor.chunk_it(content)
 
         base_filename = os.path.basename(file_path)
+        file_hash = self.get_document_metadata(file_path)["hash"]
         for i, chunk in enumerate(chunks):
             documents.append(chunk)
-            metadatas.append({"source": base_filename, "file_path": file_path, "chunk_index": i})
+            metadatas.append({
+                "source": base_filename,
+                "file_path": file_path,
+                "chunk_index": i,
+                "hash": file_hash,
+            })
             ids.append(f"{base_filename}_chunk_{i}")
 
         return documents, metadatas, ids
@@ -136,12 +163,11 @@ class DocumentProcessor:
         for action, filenames in [("add", files_to_add), ("update", files_to_update)]:
             for filename in filenames:
                 file_path = current_files[filename]["file_path"]
-                
-                if action == "update" and hasattr(self.db, "remove_document_by_source"):
-                    self.db.remove_document_by_source(filename)
-
                 docs, metas, ids = self.process_single_document(file_path)
                 if docs:
+                    if action == "update" and hasattr(self.db, "remove_document_by_source"):
+                        self.db.remove_document_by_source(filename)
+
                     # Inserimento sicuro e compatibile con qualsiasi interfaccia del Database custom
                     if hasattr(self.db, "add_chunks_with_ids"):
                         self.db.add_chunks_with_ids(docs, metas, ids)
