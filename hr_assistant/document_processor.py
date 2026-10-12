@@ -108,7 +108,6 @@ class DocumentProcessor:
         if not content:
             return [], [], []
 
-        # Applicazione del Semantic Chunking basato sul modulo del professore
         chunks = SemanticChunkerProcessor.chunk_it(content)
 
         base_filename = os.path.basename(file_path)
@@ -168,7 +167,6 @@ class DocumentProcessor:
                     if action == "update" and hasattr(self.db, "remove_document_by_source"):
                         self.db.remove_document_by_source(filename)
 
-                    # Inserimento sicuro e compatibile con qualsiasi interfaccia del Database custom
                     if hasattr(self.db, "add_chunks_with_ids"):
                         self.db.add_chunks_with_ids(docs, metas, ids)
                     elif hasattr(self.db, "add_documents"):
