@@ -1,12 +1,15 @@
 import numpy as np
 from langchain_openai import OpenAIEmbeddings
-from hr_assistant.config import OPENAI_API_KEY
+from hr_assistant.config import OPENAI_API_KEY, OPENAI_EMBEDDING_MODEL
 
 class SemanticChunking:
     
     def calculate_cosine_distances(self, sentences):
         """Calcola le distanze del coseno tra le frasi combinate usando solo numpy."""
-        embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
+        embeddings = OpenAIEmbeddings(
+            model=OPENAI_EMBEDDING_MODEL,
+            openai_api_key=OPENAI_API_KEY,
+        )
         combined_texts = [s["combined_sentence"] for s in sentences]
         
         try:

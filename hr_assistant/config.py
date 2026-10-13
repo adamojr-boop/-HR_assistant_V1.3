@@ -9,3 +9,4 @@ RESUMES_DIR = BASE_DIR / "resumes"
 CHROMA_DIR = BASE_DIR / "chroma_db"
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_EMBEDDING_MODEL = "text-embedding-3-small"
